@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai$ports$tats - The Billion-Dollar Blueprint</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Dark background for a serious, tech/finance look */
+            color: #e5e7eb;
+        }
+        .ai-gradient {
+            background-image: linear-gradient(to right, #1f2937, #0d1117);
+        }
+        .btn-primary {
+            background-color: #10b981; /* Emerald Green */
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+        .card-bg {
+            background-color: #1f2937;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="ai-gradient sticky top-0 z-50 shadow-lg border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand Name -->
+                <div class="flex-shrink-0">
+                    <span class="text-3xl font-extrabold text-white tracking-tight">
+                        Ai<span class="text-[#10b981]">$ports$tats</span>
+                    </span>
+                </div>
+                <!-- Desktop Nav Links (Hidden on Mobile) -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#hero" class="text-gray-300 hover:text-white transition duration-150 ease-in-out">Home</a>
+                    <a href="#features" class="text-gray-300 hover:text-white transition duration-150 ease-in-out">The AI Moat</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-white transition duration-150 ease-in-out">Pricing</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition duration-150 ease-in-out">Contact</a>
+                </nav>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-expanded="false">
+                    <!-- Icon for Menu -->
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#hero" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900">Home</a>
+                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">The AI Moat</a>
+                <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Pricing</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section id="hero" class="relative overflow-hidden pt-20 pb-28 sm:pt-28 sm:pb-40 text-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
+                <span class="inline-block text-sm font-semibold text-[#10b981] uppercase tracking-wider mb-4 border border-[#10b981] px-3 py-1 rounded-full">
+                    The Billion-Dollar Blueprint
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6">
+                    Predicting the Game.<br>
+                    <span class="text-[#10b981] drop-shadow-lg">Powered by AI.</span>
+                </h1>
+                <p class="max-w-3xl mx-auto text-xl text-gray-400 mb-10">
+                    Unlock a significant edge in sports betting and fantasy leagues. Our proprietary neural network delivers a level of accuracy human experts can't touch.
+                </p>
+
+                <!-- Key Stat Callout -->
+                <div class="mb-12">
+                    <span class="inline-block px-6 py-3 rounded-full bg-[#10b981] text-gray-900 text-2xl font-bold shadow-2xl shadow-[#10b981]/50">
+                        Proven NFL Prediction Accuracy: 92.9%*
+                    </span>
+                    <p class="text-sm mt-2 text-gray-500">*Based on back-tested, multi-week results in the NFL.</p>
+                </div>
+
+                <!-- Call to Action -->
+                <button onclick="showModal()" class="btn-primary px-12 py-4 text-lg font-bold rounded-xl shadow-xl hover:shadow-green-500/50">
+                    Start Winning Today - Launch Free Tier
+                </button>
+            </div>
+        </section>
+
+        <!-- Features Section: The AI Moat -->
+        <section id="features" class="py-20 bg-[#0d1117] border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-extrabold text-white">The Ai$ports$tats Moat</h2>
+                    <p class="mt-4 text-xl text-gray-400">Our competitive edge is built on three pillars of machine learning.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+
+                    <!-- Feature 1: Data Moat -->
+                    <div class="card-bg p-8 rounded-xl shadow-2xl border border-gray-700">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-700 mb-4">
+                            <!-- Data Icon (Database) -->
+                            <svg class="h-6 w-6 text-[#10b981]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10M4 7h16M4 7l2.128 2.128M20 17v-10m0 10H4m16 10l-2.128-2.128M12 4v16m0-16h.01M12 20h.01M16 11h.01M8 11h.01" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Five-Year Data Moat</h3>
+                        <p class="text-gray-400">Trained on **5+ years of comprehensive historical prediction data**, our neural network is continuously refining its understanding of game dynamics, ensuring superior insight.</p>
+                    </div>
+
+                    <!-- Feature 2: Accuracy Moat -->
+                    <div class="card-bg p-8 rounded-xl shadow-2xl border border-gray-700">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-700 mb-4">
+                            <!-- Accuracy Icon (Target) -->
+                            <svg class="h-6 w-6 text-[#10b981]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Unbeatable Accuracy</h3>
+                        <p class="text-gray-400">Our proven 92.9% accuracy rate dramatically outperforms typical human consensus (60-65%), giving our users an undeniable, data-driven edge.</p>
+                    </div>
+
+                    <!-- Feature 3: First-Mover Moat -->
+                    <div class="card-bg p-8 rounded-xl shadow-2xl border border-gray-700">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-gray-700 mb-4">
+                            <!-- First Mover Icon (Rocket) -->
+                            <svg class="h-6 w-6 text-[#10b981]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21V3m0 18l-8-4.5V9l8 4.5 8-4.5v7.5l-8 4.5zM12 3l8 4.5V9l-8-4.5z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">The AI Pioneer</h3>
+                        <p class="text-gray-400">We have a critical first-mover advantage in the booming AI-powered sports prediction space, positioned perfectly for rapid growth and market capture.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 bg-[#0d1117] border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-extrabold text-white">Simple Pricing, Powerful Results</h2>
+                    <p class="mt-4 text-xl text-gray-400">Choose the tier that matches your ambition.</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row justify-center items-stretch gap-8">
+
+                    <!-- Free Tier Card -->
+                    <div class="card-bg p-8 rounded-xl shadow-2xl border border-gray-700 flex-1 max-w-sm">
+                        <h3 class="text-2xl font-bold text-white mb-2">Basic Tier</h3>
+                        <p class="text-gray-400 mb-4">The starting line for every smart fan.</p>
+                        <p class="text-5xl font-extrabold text-white mb-6">
+                            Free<span class="text-xl font-medium text-gray-400"> / forever</span>
+                        </p>
+                        <ul class="space-y-3 text-gray-300 mb-8">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-[#10b981] mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Access to **Base Predictions** (Win/Loss)
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-[#10b981] mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Weekly NFL Game Summaries
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-[#10b981] mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Email Newsletter
+                            </li>
+                        </ul>
+                        <button onclick="showModal()" class="w-full py-3 font-semibold rounded-xl border border-gray-600 text-[#10b981] hover:bg-gray-700 transition duration-150">
+                            Get Started Free
+                        </button>
+                    </div>
+
+                    <!-- Premium Tier Card -->
+                    <div class="card-bg p-8 rounded-xl shadow-2xl border-4 border-[#10b981] flex-1 max-w-sm relative">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-[#10b981] text-gray-900 text-xs font-bold rounded-full uppercase">
+                            Best Value
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Premium Tier</h3>
+                        <p class="text-gray-400 mb-4">Full access to the AI's most powerful insights.</p>
+                        <p class="text-5xl font-extrabold text-white mb-6">
+                            $29<span class="text-xl font-medium text-gray-400"> / month</span>
+                        </p>
+                        <ul class="space-y-3 text-gray-300 mb-8">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-[#10b981] mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                **All Core Metrics** (Spread, O/U, Moneyline)
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-[#10b981] mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Multi-Sport Expansion (NBA, NHL, etc.)
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-[#10b981] mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Exclusive API Access for Power Users
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-[#10b981] mr-2 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                Priority Support & Dedicated Forums
+                            </li>
+                        </ul>
+                        <button onclick="showModal()" class="btn-primary w-full py-3 font-bold rounded-xl shadow-lg">
+                            Go Premium Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Responsible Gambling Footer Note -->
+        <div class="max-w-7xl mx-auto px-4 py-8 text-center text-gray-500 text-sm border-t border-gray-800">
+            <p>
+                **Important Notice:** Please keep in mind that gambling addiction is a serious problem. While Ai$ports$tats aims to increase the chances of winning, it's important to gamble responsibly and use the service in a controlled way.
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer & Contact Section -->
+    <footer id="contact" class="ai-gradient pt-12 pb-6 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <!-- Branding -->
+                <div>
+                    <span class="text-2xl font-extrabold text-white tracking-tight">
+                        Ai<span class="text-[#10b981]">$ports$tats</span>
+                    </span>
+                    <p class="mt-2 text-gray-400 text-sm">One Human + One AI = One Billion-Dollar Company.</p>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Contact Us</h4>
+                    <p class="text-gray-400">Email: daviesway@gmail.com</p>
+                    <p class="text-gray-400">Based in Canada</p>
+                </div>
+
+                <!-- Legal/Social -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-3">Follow</h4>
+                    <div class="flex space-x-4 justify-center md:justify-start">
+                        <!-- Placeholder Social Icons (use real links when ready) -->
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Twitter (X)</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+                &copy; 2025 Ai$ports$tats. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Modal (Replaces alert() for CTA) -->
+    <div id="cta-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 hidden flex items-center justify-center p-4" onclick="hideModal()">
+        <div class="card-bg p-8 rounded-xl max-w-sm w-full shadow-2xl border border-[#10b981]" onclick="event.stopPropagation()">
+            <h3 class="text-2xl font-bold text-white mb-4">Coming Soon!</h3>
+            <p class="text-gray-300 mb-6">
+                Thank you for your interest in Ai$ports$tats! We're currently finalizing our user platform.
+                Please sign up via email to be the first to know when our **Free** and **Premium** tiers launch.
+            </p>
+            <button onclick="hideModal()" class="btn-primary w-full py-3 font-semibold rounded-xl">
+                Close & Sign Up
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // JavaScript for Modal
+        function showModal() {
+            document.getElementById('cta-modal').classList.remove('hidden');
+        }
+        function hideModal() {
+            document.getElementById('cta-modal').classList.add('hidden');
+        }
+    </script>
+
+</body>
+</html>
