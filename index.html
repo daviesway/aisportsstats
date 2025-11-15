@@ -244,7 +244,7 @@
                 <!-- Contact Info -->
                 <div>
                     <h4 class="text-lg font-semibold text-white mb-3">Contact Us</h4>
-                    <p class="text-gray-400">Email: daviesway@gmail.com</p>
+                    <p class="text-gray-400">Email: aisportsstats@gmail.com</p>
                     <p class="text-gray-400">Based in Canada</p>
                 </div>
 
@@ -264,16 +264,29 @@
         </div>
     </footer>
 
-    <!-- Simple Modal (Replaces alert() for CTA) -->
+    <!-- Simple Modal (Email Collection Form) -->
     <div id="cta-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-50 hidden flex items-center justify-center p-4" onclick="hideModal()">
         <div class="card-bg p-8 rounded-xl max-w-sm w-full shadow-2xl border border-[#10b981]" onclick="event.stopPropagation()">
-            <h3 class="text-2xl font-bold text-white mb-4">Coming Soon!</h3>
-            <p class="text-gray-300 mb-6">
-                Thank you for your interest in Ai$ports$tats! We're currently finalizing our user platform.
-                Please sign up via email to be the first to know when our **Free** and **Premium** tiers launch.
-            </p>
-            <button onclick="hideModal()" class="btn-primary w-full py-3 font-semibold rounded-xl">
-                Close & Sign Up
+            <!-- Container for dynamic content (form or success message) -->
+            <div id="modal-content">
+                <h3 class="text-2xl font-bold text-white mb-4">Join the Waitlist & Get Exclusive Picks</h3>
+                <p class="text-gray-300 mb-6">
+                    Be the first to know when Ai$ports$tats launches. Sign up below for early access and a **free week of Premium picks**!
+                </p>
+                
+                <!-- IMPORTANT: Replace the action URL below with your actual Formspree/Netlify Forms endpoint! -->
+                <form id="waitlist-form" action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST" onsubmit="handleFormSubmission(event)">
+                    <input type="email" name="email" placeholder="Enter your email address (required)" required 
+                           class="w-full p-3 mb-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-[#10b981] focus:border-[#10b981]">
+                    <input type="hidden" name="_subject" value="New Ai$ports$tats Waitlist Sign-up">
+                    <button type="submit" class="btn-primary w-full py-3 font-semibold rounded-xl">
+                        Sign Up Now
+                    </button>
+                </form>
+            </div>
+            
+            <button onclick="hideModal()" class="w-full py-2 mt-4 text-sm text-gray-400 hover:text-white transition duration-150">
+                Close
             </button>
         </div>
     </div>
@@ -285,12 +298,81 @@
             menu.classList.toggle('hidden');
         });
 
-        // JavaScript for Modal
+        // JavaScript for Modal Display
         function showModal() {
             document.getElementById('cta-modal').classList.remove('hidden');
+            // Reset the form content when showing the modal
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <h3 class="text-2xl font-bold text-white mb-4">Join the Waitlist & Get Exclusive Picks</h3>
+                <p class="text-gray-300 mb-6">
+                    Be the first to know when Ai$ports$tats launches. Sign up below for early access and a **free week of Premium picks**!
+                </p>
+                <form id="waitlist-form" action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST" onsubmit="handleFormSubmission(event)">
+                    <input type="email" name="email" placeholder="Enter your email address (required)" required 
+                           class="w-full p-3 mb-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-[#10b981] focus:border-[#10b981]">
+                    <input type="hidden" name="_subject" value="New Ai$ports$tats Waitlist Sign-up">
+                    <button type="submit" class="btn-primary w-full py-3 font-semibold rounded-xl">
+                        Sign Up Now
+                    </button>
+                </form>
+            `;
         }
+        
         function hideModal() {
             document.getElementById('cta-modal').classList.add('hidden');
+        }
+
+        // JavaScript for Form Submission Handling
+        function handleFormSubmission(event) {
+            event.preventDefault(); // Stop the browser's default form submission
+            const form = event.target;
+            const modalContent = document.getElementById('modal-content');
+            const emailInput = form.querySelector('input[name="email"]').value;
+            
+            if (!emailInput) return; // Simple check
+
+            // --- IMPORTANT: This is the section you need to customize ---
+            // 1. SIGN UP for a FREE form service (like Formspree or Netlify Forms).
+            // 2. Replace the 'action' attribute in the HTML form above with the unique URL the service provides you.
+            // 3. Uncomment and adjust the fetch request below to actually send the data.
+            
+            /* // REAL FORM SUBMISSION EXAMPLE (using fetch)
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success State
+                    modalContent.innerHTML = generateSuccessMessage(emailInput);
+                    setTimeout(hideModal, 3000); // Hide after 3 seconds
+                } else {
+                    // Error State
+                    alert("There was an error submitting your form. Please try again later.");
+                }
+            })
+            .catch(error => {
+                // Network Error State
+                alert("Network error. Please check your connection.");
+            });
+            */
+            
+            // --- SIMULATED SUCCESS (for demonstration purposes only) ---
+            modalContent.innerHTML = generateSuccessMessage(emailInput);
+            setTimeout(hideModal, 3000); // Hide after 3 seconds
+            // -----------------------------------------------------------
+        }
+        
+        function generateSuccessMessage(email) {
+            return `
+                <h3 class="text-2xl font-bold text-[#10b981] mb-4 text-center">Success!</h3>
+                <p class="text-gray-300 mb-6 text-center">
+                    We've added **${email}** to the waitlist. Look out for your free picks soon!
+                </p>
+                <svg class="h-16 w-16 text-[#10b981] mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            `;
         }
     </script>
 
