@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFFL — Canadian Flag Football League</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nfl-navy: #013369;
+    --nfl-red: #D50A0A;
+    --nfl-gold: #FFB612;
+    --white: #FFFFFF;
+    --off-white: #F0F0F0;
+    --dark: #070D1A;
+    --mid: #0A1628;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(1,51,105,0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 100%, rgba(213,10,10,0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: clamp(13px, 2vw, 16px);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--nfl-gold);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 14vw, 180px);
+    line-height: 0.9;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .hero-title span {
+    color: var(--nfl-red);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 400;
+    font-size: clamp(16px, 3vw, 26px);
+    letter-spacing: 0.08em;
+    color: var(--off-white);
+    margin-top: 28px;
+    max-width: 700px;
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  .hero-sub strong {
+    color: var(--nfl-gold);
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 3px;
+    background: var(--nfl-red);
+    margin: 36px auto 0;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+
+  .olympic-badge {
+    margin-top: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(255,182,18,0.4);
+    padding: 12px 28px;
+    border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--nfl-gold);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1s;
+  }
+
+  .olympic-badge::before {
+    content: '⚑';
+    font-size: 18px;
+  }
+
+  /* ── SECTION SHARED ── */
+  section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--nfl-red);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  /* ── WHY CANADA ── */
+  .why-section {
+    background: var(--mid);
+    max-width: 100%;
+    padding: 100px 20px;
+  }
+
+  .why-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .why-card {
+    background: var(--dark);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .why-card:hover { transform: translateY(-4px); }
+
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--nfl-red);
+  }
+
+  .why-card:nth-child(2)::before { background: var(--nfl-gold); }
+  .why-card:nth-child(3)::before { background: var(--nfl-navy); border-left: 4px solid #2255AA; }
+
+  .why-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    color: rgba(255,255,255,0.05);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .why-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .why-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* ── PAIRINGS ── */
+  .pairings-section { padding-top: 100px; }
+
+  .pairings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .pairing-card {
+    background: var(--mid);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+
+  .pairing-card:hover { background: #0d1f3a; }
+
+  .pairing-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--nfl-red), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .pairing-card:hover::after { transform: scaleX(1); }
+
+  .pairing-city {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+  }
+
+  .pairing-cfl {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+  }
+
+  .pairing-connector {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--nfl-gold);
+    white-space: nowrap;
+  }
+
+  .pairing-nfl {
+    text-align: right;
+  }
+
+  .pairing-nfl-team {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: var(--nfl-gold);
+  }
+
+  .pairing-nfl-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+  }
+
+  .pairing-logic {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--nfl-navy);
+    padding: 8px 32px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .pairing-card:hover .pairing-logic { transform: translateY(0); }
+
+  /* Saskatchewan callout */
+  .sask-callout {
+    background: linear-gradient(135deg, var(--nfl-navy) 0%, #0A0F1E 100%);
+    border: 1px solid rgba(1,51,105,0.6);
+    border-left: 4px solid var(--nfl-gold);
+    padding: 48px 48px;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sask-callout::before {
+    content: '★';
+    position: absolute;
+    right: 40px; top: 20px;
+    font-size: 120px;
+    color: rgba(255,182,18,0.05);
+    line-height: 1;
+  }
+
+  .sask-callout h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--nfl-gold);
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .sask-callout p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.75);
+    max-width: 700px;
+  }
+
+  /* ── NAME YOUR TEAM ── */
+  .name-section {
+    background: var(--nfl-red);
+    max-width: 100%;
+    padding: 100px 20px;
+  }
+
+  .name-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .name-section .section-label { color: rgba(255,255,255,0.7); }
+  .name-section .section-title { color: var(--white); }
+
+  .name-section p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .name-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 12px;
+    max-width: 700px;
+  }
+
+  .name-form input, .name-form select {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    padding: 16px 20px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    outline: none;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .name-form input::placeholder { color: rgba(255,255,255,0.45); }
+  .name-form select option { background: #333; color: white; }
+  .name-form input:focus, .name-form select:focus {
+    border-color: var(--nfl-gold);
+  }
+
+  .name-form button {
+    background: var(--dark);
+    color: var(--nfl-gold);
+    border: none;
+    padding: 16px 32px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .name-form button:hover { background: var(--nfl-gold); color: var(--dark); }
+
+  .submission-count {
+    margin-top: 24px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+  }
+
+  #success-msg {
+    display: none;
+    margin-top: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--nfl-gold);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── FOUNDER ── */
+  .founder-section {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .founder-section { grid-template-columns: 1fr; gap: 40px; }
+    .name-form { grid-template-columns: 1fr; }
+    .name-form button { justify-self: start; }
+  }
+
+  .founder-text .section-title { margin-bottom: 20px; }
+
+  .founder-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 16px;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .stat { }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--nfl-gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+  }
+
+  .founder-visual {
+    background: var(--mid);
+    padding: 48px;
+    border-top: 3px solid var(--nfl-red);
+  }
+
+  .founder-visual h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--nfl-red);
+    margin-bottom: 24px;
+  }
+
+  .credential {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .credential:last-child { border-bottom: none; }
+
+  .cred-dot {
+    width: 8px; height: 8px;
+    background: var(--nfl-gold);
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .cred-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--mid);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 48px 20px;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+  }
+
+  footer strong { color: var(--nfl-gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-eyebrow">In collaboration with the NFL</div>
+  <div class="hero-title">
+    CFFL
+    <span>Canadian Flag</span>
+    Football League
+  </div>
+  <div class="hero-sub">
+    The official training ground for <strong>Canada's 2028 Olympic team.</strong><br>
+    Nine cities. Nine NFL brother teams. One nation's game.
+  </div>
+  <div class="hero-divider"></div>
+  <div class="olympic-badge">LA 2028 Olympic Pipeline — Flag Football</div>
+</div>
+
+<!-- ── WHY CANADA ── -->
+<div class="why-section full-bleed">
+  <div class="why-inner">
+    <div class="section-label">The Opportunity</div>
+    <div class="section-title">Why Canada. Why Now.</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-number">01</div>
+        <h3>Beyond Toronto</h3>
+        <p>The NFL's Canadian strategy begins and ends with Toronto. Millions of passionate football fans from Vancouver to Halifax have no NFL team identity — until now.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-number">02</div>
+        <h3>The Stadium Solution</h3>
+        <p>Flag football doesn't need a billion-dollar stadium. Canada's existing infrastructure is perfectly sized. The barrier to entry disappears entirely.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-number">03</div>
+        <h3>Olympic Pipeline</h3>
+        <p>Flag football debuts at LA 2028. Canada has elite athletes ready — they just need an organized development pathway. The CFFL is that pathway, starting now.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-number">04</div>
+        <h3>Health Research</h3>
+        <p>Canada's publicly funded health institutions are world-class. A CFFL partnership creates a research sandbox for concussion reduction that benefits the entire sport globally.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PAIRINGS ── -->
+<section class="pairings-section">
+  <div class="section-label">The Brother Teams</div>
+  <div class="section-title">Nine Cities. Nine Partnerships.</div>
+
+  <div class="pairings-grid">
+
+    <div class="pairing-card">
+      <div class="pairing-left">
+        <div class="pairing-city">Vancouver</div>
+        <div class="pairing-cfl">BC Lions</div>
+      </div>
+      <div class="pairing-connector">NFL Brother ›</div>
+      <div class="pairing-nfl">
+        <div class="pairing-nfl-team">Seattle</div>
+        <div class="pairing-nfl-label">Seahawks</div>
+      </div>
+      <div class="pairing-logic">Pacific Northwest neighbours — 3 hours apart, shared culture</div>
+    </div>
+
+    <div class="pairing-card">
+      <div class="pairing-left">
+        <div class="pairing-city">Calgary</div>
+        <div class="pairing-cfl">Stampeders</div>
+      </div>
+      <div class="pairing-connector">NFL Brother ›</div>
+      <div class="pairing-nfl">
+        <div class="pairing-nfl-team">Denver</div>
+        <div class="pairing-nfl-label">Broncos</div>
+      </div>
+      <div class="pairing-logic">Mountain cities, shared plains spirit</div>
+    </div>
+
+    <div class="pairing-card">
+      <div class="pairing-left">
+        <div class="pairing-city">Edmonton</div>
+        <div class="pairing-cfl">Elks</div>
+      </div>
+      <div class="pairing-connector">NFL Brother ›</div>
+      <div class="pairing-nfl">
+        <div class="pairing-nfl-team">Green Bay</div>
+        <div class="pairing-nfl-label">Packers</div>
+      </div>
+      <div class="pairing-logic">Small market, legendary blue-collar fanbases</div>
+    </div>
+
+    <div class="pairing-card">
+      <div class="pairing-left">
+        <div class="pairing-city">Regina</div>
+        <div class="pairing-cfl">Roughriders</div>
+      </div>
+      <div class="pairing-connector">NFL Brother ›</div>
+      <div class="pairing-nfl">
+        <div class="pairing-nfl-team">Philadelphia</div>
+        <div class="pairing-nfl-label">Eagles</div>
+      </div>
+      <div class="pairing-logic">Green on green — same colors, same fanbase intensity</div>
+    </div>
+
+    <div class="pairing-card">
+      <div class="pairing-left">
+        <div class="pairing-city">Winnipeg</div>
+        <div class="pairing-cfl">Blue Bombers</div>
+      </div>
+      <div class="pairing-connector">NFL Brother ›</div>
+      <div class="pairing-nfl">
+        <div class="pairing-nfl-team">Minnesota</div>
+        <div class="pairing-nfl-label">Vikings</div>
+      </div>
+      <div class="pairing-logic">Obvious geography, strong existing Viking fanbase in Manitoba</div>
+    </div>
+
+    <div class="pairing-card">
+      <div class="pairing-left">
+        <div class="pairing-city">Toronto</div>
+        <div class="pairing-cfl">Argonauts</div>
+      </div>
+      <div class="pairing-connector">NFL Brother ›</div>
+      <div class="pairing-nfl">
+        <div class="pairing-nfl-team">Buffalo</div>
+        <div class="pairing-nfl-label">Bills</div>
+      </div>
+      <div class="pairing-logic">Bills already have enormous Toronto fanbase — series precedent</div>
+    </div>
+
+    <div class="pairing-card">
+      <div class="pairing-left">
+        <div class="pairing-city">Hamilton</div>
+        <div class="pairing-cfl">Tiger-Cats</div>
+      </div>
+      <div class="pairing-connector">NFL Brother ›</div>
+      <div class="pairing-nfl">
+        <div class="pairing-nfl-team">Pittsburgh</div>
+        <div class="pairing-nfl-label">Steelers</div>
+      </div>
+      <div class="pairing-logic">Steel cities, black & gold — this pairing runs deep</div>
+    </div>
+
+    <div class="pairing-card">
+      <div class="pairing-left">
+        <div class="pairing-city">Montréal</div>
+        <div class="pairing-cfl">Alouettes</div>
+      </div>
+      <div class="pairing-connector">NFL Brother ›</div>
+      <div class="pairing-nfl">
+        <div class="pairing-nfl-team">New England</div>
+        <div class="pairing-nfl-label">Patriots</div>
+      </div>
+      <div class="pairing-logic">French-Canadian market, New England cultural reach</div>
+    </div>
+
+    <div class="pairing-card">
+      <div class="pairing-left">
+        <div class="pairing-city">Ottawa</div>
+        <div class="pairing-cfl">Redblacks</div>
+      </div>
+      <div class="pairing-connector">NFL Brother ›</div>
+      <div class="pairing-nfl">
+        <div class="pairing-nfl-team">Washington</div>
+        <div class="pairing-nfl-label">Commanders</div>
+      </div>
+      <div class="pairing-logic">Capital to capital — the natural federal pairing</div>
+    </div>
+
+  </div>
+
+  <!-- Saskatchewan callout -->
+  <div class="sask-callout">
+    <h3>The Saskatchewan Proof of Concept</h3>
+    <p>Saskatchewan has no NHL team. The Roughriders are not just a football team — they are the culture. Fans drive hours across the prairies to watch games. Under the CFFL model, Regina and Saskatoon each host a flag football team, creating a local rivalry that feeds directly into NFL engagement. If the CFFL works anywhere, it works here first. And if it works here, it works everywhere.</p>
+  </div>
+</section>
+
+<!-- ── NAME YOUR TEAM ── -->
+<div class="name-section full-bleed">
+  <div class="name-inner">
+    <div class="section-label">Fan Engagement</div>
+    <div class="section-title">Name Your Team.</div>
+    <p>Every CFFL city needs a flag football team name — and Canadian fans should choose it. Submit your suggestion below. Every submission builds the CFFL fan registry and shapes the league.</p>
+
+    <div class="name-form">
+      <select id="city-select">
+        <option value="" disabled selected>Select Your City</option>
+        <option>Vancouver</option>
+        <option>Calgary</option>
+        <option>Edmonton</option>
+        <option>Regina</option>
+        <option>Saskatoon</option>
+        <option>Winnipeg</option>
+        <option>Toronto</option>
+        <option>Hamilton</option>
+        <option>Montréal</option>
+        <option>Ottawa</option>
+        <option>Halifax</option>
+      </select>
+      <input type="text" id="team-name" placeholder="Your team name idea" maxlength="40" />
+      <button onclick="submitName()">Submit</button>
+    </div>
+    <div class="submission-count" id="sub-count">Be among the first to shape the CFFL</div>
+    <div id="success-msg">✓ Submitted! You're part of the CFFL founding community.</div>
+  </div>
+</div>
+
+<!-- ── FOUNDER ── -->
+<div class="founder-section">
+  <div class="founder-text">
+    <div class="section-label">The Founder</div>
+    <div class="section-title">Built by a Canadian Football Analyst</div>
+    <p>The CFFL concept was developed by Wayne Davies, founder of AI$ports$tats — a five-year NFL analytics project combining artificial intelligence with gamebook data to produce one of the most accurate predictive models in independent football analysis.</p>
+    <p>Wayne brings data credentials, a deep knowledge of Canadian sports culture, and a belief that every Canadian city deserves a seat at the NFL table.</p>
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">~78%</div>
+        <div class="stat-label">Model Accuracy</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Seasons of Data</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">9</div>
+        <div class="stat-label">CFFL Cities</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="founder-visual">
+    <h4>Project Credentials</h4>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <div class="cred-text">Five seasons of NFL gamebook analysis with composite predictive modelling (TGV, ELO, DELO, positional ratings)</div>
+    </div>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <div class="cred-text">Python-based AI analytics infrastructure built independently from first principles</div>
+    </div>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <div class="cred-text">Deep knowledge of Canadian prairie sports culture — the overlooked NFL market</div>
+    </div>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <div class="cred-text">Submission to the NFL Innovation Hub Challenge — Event Discovery & Global Engagement category</div>
+    </div>
+    <div class="credential">
+      <div class="cred-dot"></div>
+      <div class="cred-text">Proposed CFFL season: June–October, complementing NFL calendar with zero schedule conflict</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p><strong>CFFL — Canadian Flag Football League</strong><br>
+  A concept submission to the NFL Innovation Hub Challenge 2026<br>
+  Developed by Wayne Davies · AI$ports$tats · Wetaskiwin, Alberta, Canada</p>
+</footer>
+
+<script>
+  let count = 0;
+
+  function submitName() {
+    const city = document.getElementById('city-select').value;
+    const name = document.getElementById('team-name').value.trim();
+    if (!city || !name) {
+      alert('Please select a city and enter a team name.');
+      return;
+    }
+    count++;
+    document.getElementById('sub-count').textContent = count + ' fan suggestion' + (count !== 1 ? 's' : '') + ' submitted';
+    document.getElementById('success-msg').style.display = 'block';
+    document.getElementById('city-select').value = '';
+    document.getElementById('team-name').value = '';
+    setTimeout(() => {
+      document.getElementById('success-msg').style.display = 'none';
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>
